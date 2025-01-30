@@ -1,55 +1,48 @@
 // ini file javascript
-document.getElementById('calculate-btn').addEventListener('click', function () {
-    const weight = parseFloat(document.getElementById('weight').value);
-    const height = parseFloat(document.getElementById('height').value) / 100;
+function calculateBMI() {
+    let height = document.getElementById('height').value;
+    let weight = document.getElementById('weight').value;
+    let age = document.getElementById('age').value;
+    let gender = document.getElementById('gender').value;
+    let errorMessage = document.getElementById('error-message');
+    let resultContainer = document.getElementById('result');
 
-    if (isNaN(weight) || isNaN(height)) {
-        alert('Mohon masukkan berat dan tinggi badan yang valid.');
+    if (!height || !weight || !age || !gender) {
+        errorMessage.textContent = 'Mohon isi terlebih dahulu';
+        resultContainer.innerHTML = '';
         return;
+    } else {
+        errorMessage.textContent = '';
     }
 
-    const bmi = weight / (height * height);
-    let composition = '';
-
+    let bmi = (weight / ((height / 100) * (height / 100))).toFixed(2);
+    let category = '';
+    let advice = '';
     if (bmi < 18.5) {
-        composition = 'Berat badan Anda kurang.';
-    } else if (bmi >= 18.5 && bmi < 24.9) {
-        composition = 'Berat badan Anda ideal.';
-    } else if (bmi >= 25 && bmi < 29.9) {
-        composition = 'Anda kelebihan berat badan.';
-    } else if (bmi >= 30) {
-        composition = 'Anda mengalami obesitas.';
+        category = 'Underweight';
+        advice = 'Anda berada dalam kategori underweight. Konsultasikan dengan ahli gizi untuk meningkatkan berat badan dengan pola makan sehat.';
+    } else if (bmi < 24.9) {
+        category = 'Normal weight';
+        advice = 'Anda memiliki berat badan normal. Pertahankan pola makan seimbang dan gaya hidup sehat.';
+    } else if (bmi < 29.9) {
+        category = 'Overweight';
+        advice = 'Anda berada dalam kategori overweight. Pertimbangkan untuk mengatur pola makan dan rutin berolahraga.';
+    } else {
+        category = 'Obese';
+        advice = 'Anda berada dalam kategori obesitas. Segera konsultasikan dengan dokter atau ahli gizi untuk langkah-langkah penurunan berat badan.';
     }
+    resultContainer.innerHTML = `
+        <h3 class='category'>${category}</h3>
+        <p>BMI: ${bmi}</p>
+        <p>${advice}</p>
+    `;
+}
 
-    const compositionElement = document.getElementById('composition');
-    compositionElement.innerHTML = `BMI Anda adalah.<br><span style="font-size: 2em;">${bmi.toFixed(2)}</span><br>${composition}`;
-
-    if (bmi >= 25 && bmi < 29.9) {
-        alert('Perhatian: Berat badan Anda berlebih. Disarankan untuk konsultasi dengan dokter.');
-    }
-    if (bmi <= 18.5) {
-        alert('Perhatian: Berat badan Anda kurang. Disarankan untuk konsultasi dengan dokter.');
-    }
-    if (bmi >= 18.5 && bmi < 24.9) {
-        alert('Selamat: Berat badan Anda Ideal. Tetap jaga pola makan dan olah raga teratur.');
-    }
-    if (bmi >= 30) {
-        alert('Perhatian: Anda menderita Obesitas. Segera konsultasi dengan dokter.');
-    }
-    const resultBox = document.getElementById('composition');
-
-    document.getElementById('calculate-btn').addEventListener('click', function () {
-        const bmi = weight / (height * height);
-        let peringatan = '';
-
-        if (bmi < 18.5) {
-            composition = 'Berat badan Anda kurang.';
-        } else if (bmi >= 18.5 && bmi < 24.9) {
-            composition = 'Berat badan Anda ideal.';
-        } else if (bmi >= 25 && bmi < 29.9) {
-            composition = 'Anda kelebihan berat badan.';
-        } else if (bmi >= 30) {
-            composition = 'Anda mengalami obesitas.';
-        }
-    });
-});
+function resetForm() {
+    document.getElementById('age').value = '';
+    document.getElementById('gender').value = '';
+    document.getElementById('height').value = '';
+    document.getElementById('weight').value = '';
+    document.getElementById('error-message').textContent = '';
+    document.getElementById('result').innerHTML = '';
+}

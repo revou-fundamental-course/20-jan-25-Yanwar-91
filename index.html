@@ -1,142 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="CSS\styles.css">
+    <script src="./js/script.js"></script>
+    <title>Kalkulator BMI</title>
 </head>
 
 <body>
-    <!--Tampilan Website Kalkulator BMI-->
     <header class="main-header">
-        <h1>Kalkulator BMI</h1>
+        <h2>Kalkulator BMI</h2>
     </header>
-
+    <article class="article-group">
+        <p>Kalkulator BMI (Body Mass Index) adalah alat yang digunakan untuk menghitung indeks massa tubuh seseorang berdasarkan berat badan dan tinggi badannya. BMI digunakan sebagai indikator umum untuk menilai apakah seseorang memiliki berat badan yang kurang, normal, berlebih, atau mengalami obesitas.</p>
+        <p>Berat badan ideal adalah impian semua orang. Tidak hanya memiliki tubuh yang menunjang penampilan, berat badan ideal juga menandakan kondisi tubuh yang sehat. Bagaimana denganmu?</p>
+        <p>Yuk hitung sekarang di kalkulator BMI.</p>
+    </article>
     <main>
-        <!--Left Content-->
         <section>
-            <!-- Introduction -->
-            <article>
-                <p>
-                Berat Badan Ideal adalah impian semua orang. 
-                Tidak hanya memiliki bentuk tubuh yang menunjang penampilan, berat badan ideal juga menandakan kondisi tubuh yang sehat. 
-                Bagaimana denganmu? Yuk, hitung sekrang di kalkulator BMI.
-            </p>
-        </article>
-
-        <!--Untuk Tampilan Form-->
-        <form id="bmiform">
-            <div class="form-group">
-                <label for="gender">Jenis Kelamin</label>
-                <input type="radio" id="gender" value="Pria" /> Pria
-                <input type="radio" id="gender" value="Wanita" /> Wanita
-            </div>
-
-            <div class="form-group">
-                <label for="input-berat-badan">Berat Badan (kg)</label>
-                <input type="number" id="input-berat-badan" required placeholder="Masukkan Berat Badan">
-            </div>
-
-            <div class="form-group">
-                <label for="input-usia">Usia (tahun)</label>
-                <input type="number" id="input-usia" required placeholder="Masukkan Usia">
-            </div>
-
-            <div class="form-group">
-                <label for="input-Tinggi-badan">Tinggi Badan (cm)</label>
-                <input type="number" id="input-Tinggi-badan" required placeholder="Masukkan Tinggi Badan">
-            </div>
-
-            <div class="button-group">
-                <button class="bg-cadet-blue" type="button" onclick="calculateBmi()">Hitung BMI</button>
-                <button class="bg-black">Reset</button>
-            </div>
-        </form>
-
-        <!--Feature Information-->
-        <article>
-            <header>
-                <h2>Keunggulan Fitur</h2>
-            </header>
-            <li type="1">Menghitung berat badan</li>
-            <li type="1">Menentukan kategori berat badan ideal atau tidak</li>
-            <li type="1">Mempersiapkan program penurunan berat bdaan</li>
-            <p>
-                Kalkulator ini hanya boleh digunakan oleh orang dewasa (wanita hamil
-                atau menyusui tidak boleh mengandalkan pembacaan BMI ini) dan tidak
-                ada tindakan yang harus diambil berdasarkan nilainya selain
-                berkonsultasi dengan orang yang memenuhi syarat seperti dokter.</p>
-            <p>
-            Kalkulator akan memberi Anda gambaran tentang perbandingan berat
-            badan Anda dengan nilai umum. Indeks Massa Tubuh (atau BMI) dihitung
-            sebagai berat badan Anda (dalam kilogram) dibagi dengan kuadrat
-            tinggi badan Anda (dalam meter) atau BMI = Kg/M2.
-            </p>
-        </article>
-    </section>
-        <section class="result-section">
-            <header>
-                <h2>Hasil</h2>
-            </header>
-
-             <!-- Result -->
-          <div class="result" id="result">
-            <h2 style="margin: 0">Hasil</h2>
-            <p id="bmiGender" style="margin: 0"></p>
-            <div class="status">
-              <h3 id="bmiStatus"></h3>
-              <h1 id="bmiValue">0</h1>
-            </div>
-            <div class="van">
-              <p id="bmiValueBottom"></p>
-              <p id="bmiAdvice"></p></div>
-              <div class="content">
-                <div id="underweight" style="display: none;">
-                    <h4>Berat Rendah dapat Menyebabkan berbagai Masalah Penyakit:</h4>
-                    <ol>
-                        <li>Infertilitas</li>
-                        <li>Anemia</li>
-                        <li>Osteoporosis</li>
-                        <li>Sistem Imun Lemah</li>
-                    </ol>
+            <div class="container">
+                <div class="form-group">
+                    <label for="age">Usia</label>
+                    <input type="number" id="age">
                 </div>
-                <div id="normal" style="display: none;">
-                  <h4>Beberapa Langkah agar Berat Badan Tetap Ideal:</h4>
-                  <ol>
-                      <li>Pola Makan Seimbang</li>
-                      <li>Rutin Berolahraga</li>
-                      <li>Istirahat yang Cukup</li>
-                      <li>Hidrasi yang Cukup</li>
-                  </ol>
-              </div>
-                <div id="overweight" style="display: none;">
-                    <h4>Beberapa penyakit yang berasal dari kegemukan:</h4>
-                    <ol>
-                        <li>Diabetes</li>
-                        <li>Hipertensi</li>
-                        <li>Sakit Jantung</li>
-                        <li>Osteoarthritis</li>
-                    </ol>
+                <div class="form-group">
+                    <label for="gender">Jenis Kelamin</label>
+                    <select id="gender">
+                        <option value="male">laki-laki</option>
+                        <option value="female">perempuan</option>
+                    </select>
                 </div>
+                <div class="form-group">
+                    <label for="height">Tinggi Badan (cm)</label>
+                    <input type="number" id="height">
+                </div>
+                <div class="form-group">
+                    <label for="weight">Berat Badan (kg)</label>
+                    <input type="number" id="weight">
+                </div>
+                <p class="error-message" id="error-message"></p>
+                <button onclick="calculateBMI()">Hitung</button>
+                <button onclick="resetForm()" style="background: #dc3545;">Reset</button>
+                <div class="result" id="result"></div>
             </div>
-              <div class="note">
-              <p id="bmiNote"></p></div>
-
-              <div>
-              <a href="https://www.halodoc.com/tanya-dokter/kategori/spesialis-gizi-klinik?af_sub1=sub%201&af_force_deeplink=true&af_cost_value=0&source_caller=bulk&pid=Web&is_retargeting=true&af_click_lookback=7d&shortlink=n5jecetf&af_adset=https:%2F%2Fwww.halodoc.com%2Fartikel%2Fini-rekomendasi-dokter-gizi-di-halodoc-yang-bisa-dihubungi&af_ad=Web_kategori_article&af_channel=Organic&af_cost_currency=USD&c=DoctorReco" class="button2">Konsultasi ke HaloDoc</a>
-              <a href="https://www.halodoc.com/rumah-sakit" class="button2">Registrasi Online Sekarang</a>
-              </div>
         </section>
-       
     </main>
+    <header>
+        <h2>
+            Keunggulan Fitur :
+        </h2>
+    </header>
+    <article>
+        <div>1. Menghitung berat badan</div>
+        <div>2. Menentukan kategori berat badan ideal atau tidak</div>
+        <div>3. Mempersiapkan program penurunan berat badan </div>
+    <header>
+        <h2>
+            Beberapa Penyakit Obesitas :
+        </h2>
+    </header>
+    <div>1. Diabetes</div>
+    <div>2. Jantung dan Stroke</div>
+    <div>3. Osteoartritis</div>
+    <div>4. Diabetes</div>
 
+    <p>Dan masih banyak lagi penyakit yang disebabkan obesitas, jadi Jaga kesehatanmu dengan pola hidup sehat! Konsumsi makanan bergizi seimbang, rutin berolahraga, dan hindari kebiasaan yang dapat memicu obesitas. Tubuh yang sehat adalah investasi terbaik untuk masa depan yang lebih baik! </p>
+       
+    </article>
     <footer>
-        <span>Made By Yanwar@2025</span>
+        <span>
+            © Made by Yanwar 2025
+        </span> 
     </footer>
-
-    <script src="js/script.js"></script>
 </body>
-
 </html>
